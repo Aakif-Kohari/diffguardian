@@ -428,6 +428,12 @@ Please review our [Code of Conduct](CODE_OF_CONDUCT.md) before participating.
 
 ---
 
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for a full history of releases and changes.
+
+---
+
 ## License
 
 [MIT](LICENSE) &copy; Aryan Gupta
