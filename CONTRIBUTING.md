@@ -26,12 +26,12 @@ Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before participating.
 1. **Fork** the repository on GitHub.
 2. **Clone** your fork locally:
    ```bash
-   git clone https://github.com/<your-username>/diff-guardian.git
-   cd diff-guardian
+   git clone https://github.com/<your-username>/diffguardian.git
+   cd diffguardian
    ```
 3. **Add the upstream remote:**
    ```bash
-   git remote add upstream https://github.com/Aryan0628/diff-guardian.git
+   git remote add upstream https://github.com/Aryan0628/diffguardian.git
    ```
 4. **Create a branch** for your work:
    ```bash
@@ -96,7 +96,7 @@ npx dg --help
 ## Project Structure
 
 ```
-diff-guardian/
+diffguardian/
 ├── src/
 │   ├── cli.ts                  # CLI entry point — command routing
 │   ├── config.ts               # Configuration loader (dg.config.json)
@@ -155,7 +155,7 @@ diff-guardian/
 
 ### 1. Pick or Create an Issue
 
-- Check the [Issues](https://github.com/Aryan0628/diff-guardian/issues) page for open items.
+- Check the [Issues](https://github.com/Aryan0628/diffguardian/issues) page for open items.
 - If you want to work on something not listed, create an issue first to discuss scope and approach.
 - Issues labeled `good first issue` are a great starting point for new contributors.
 
@@ -404,8 +404,8 @@ When requesting a feature, include:
 
 ## Getting Help
 
-- Open a [Discussion](https://github.com/Aryan0628/diff-guardian/discussions) for general questions
-- Open an [Issue](https://github.com/Aryan0628/diff-guardian/issues) for bugs and feature requests
+- Open a [Discussion](https://github.com/Aryan0628/diffguardian/discussions) for general questions
+- Open an [Issue](https://github.com/Aryan0628/diffguardian/issues) for bugs and feature requests
 - Check the [Documentation](https://diffguardian.space/docs) for guides and references
 
 ---

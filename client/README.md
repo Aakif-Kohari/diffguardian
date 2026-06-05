@@ -3,12 +3,12 @@
 </p>
 
 <p align="center">
-  <strong>The official documentation and marketing site for <a href="https://github.com/Aryan0628/diff-guardian">Diff Guardian</a>.</strong>
+  <strong>The official documentation and marketing site for <a href="https://github.com/Aryan0628/diffguardian">Diff Guardian</a>.</strong>
 </p>
 
 <p align="center">
   <a href="https://diffguardian.space">Live Site</a> &middot;
-  <a href="https://github.com/Aryan0628/diff-guardian">CLI Repository</a>
+  <a href="https://github.com/Aryan0628/diffguardian">CLI Repository</a>
 </p>
 
 ---
@@ -123,4 +123,4 @@ All docs are TSX components in `src/content/docs/`. To add a new page:
 
 ## License
 
-[ISC](https://github.com/Aryan0628/diff-guardian/blob/main/LICENSE) &copy; Aryan Gupta
+[ISC](https://github.com/Aryan0628/diffguardian/blob/main/LICENSE) &copy; Aryan Gupta
