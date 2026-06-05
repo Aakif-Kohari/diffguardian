@@ -26,7 +26,7 @@ export default function GettingStarted() {
         to both the <code>diff-guard</code> and the shorthand <code>dg</code> binary.
       </p>
       <CodeBlock
-        code="npm install --save-dev diff-guard"
+        code="npm install --save-dev @aryan28/diff-guard"
         language="bash"
       />
 
