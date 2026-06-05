@@ -1,5 +1,5 @@
 {
-  "name": "diff-guard",
+  "name": "@aryan28/diff-guard",
   "version": "0.1.0",
   "description": "Impact-aware git diff CLI using WASM tree-sitter AST to map API blast radius.",
   "main": "dist/index.js",
