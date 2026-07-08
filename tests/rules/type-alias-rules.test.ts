@@ -39,7 +39,23 @@ describe('R29 — typeAliasUnionNarrowedRule', () => {
 
     expect(result).not.toBeNull();
     const results = asArray(result);
+    expect(results).toHaveLength(1);
     expect(results[0].message).toContain('2');
+  });
+
+  it('✅ True Positive: multiple removals produce one RuleResult per member (matches R27)', () => {
+    const oldSig = mockTypeAliasSig({ unionMembers: ["'a'", "'b'", "'c'"] });
+    const newSig = mockTypeAliasSig({ unionMembers: ["'a'"] });
+
+    const result = typeAliasUnionNarrowedRule.check(oldSig, newSig);
+
+    expect(result).not.toBeNull();
+    const results = asArray(result);
+    expect(results).toHaveLength(2);
+    expect(results.every(r => r.severity === 'breaking')).toBe(true);
+    expect(results.every(r => r.changeType === 'type_alias_changed')).toBe(true);
+    expect(results.map(r => r.message).some(m => m.includes("'b'"))).toBe(true);
+    expect(results.map(r => r.message).some(m => m.includes("'c'"))).toBe(true);
   });
 
   it('🚫 Safe Expansion: adding a new literal member is not flagged', () => {

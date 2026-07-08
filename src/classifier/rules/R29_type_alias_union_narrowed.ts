@@ -11,8 +11,9 @@
  * Structured extraction lives in the parser (see `buildTypeAliasSignature()`
  * / `extractUnionLiteralMembers()` in `src/parsers/translators/typescript.ts`),
  * which populates `TypeAliasSignature.unionMembers` only when the alias is
- * a union of literal types. This rule just diffs that array — same pattern
- * as R27's enum member comparison.
+ * a union of literal types. This rule diffs that array one member at a
+ * time — same pattern as R27's enum member comparison, so multiple
+ * removals produce multiple RuleResults instead of one joined message.
  */
 
 import { TypeAliasRule, RuleResult } from '../types';
@@ -33,14 +34,18 @@ export const typeAliasUnionNarrowedRule: TypeAliasRule = {
     if (!oldSig.unionMembers || !newSig.unionMembers) return null;
 
     const newSet = new Set(newSig.unionMembers);
-    const removed = oldSig.unionMembers.filter(m => !newSet.has(m));
+    const results: RuleResult[] = [];
 
-    if (removed.length === 0) return null;
+    for (const member of oldSig.unionMembers) {
+      if (!newSet.has(member)) {
+        results.push({
+          severity: 'breaking',
+          changeType: 'type_alias_changed',
+          message: `Union type alias lost member ${member}. Consumers using exhaustive switch statements or direct literal comparisons against this value will fail to compile or silently mishandle it.`,
+        });
+      }
+    }
 
-    return {
-      severity: 'breaking',
-      changeType: 'type_alias_changed',
-      message: `Union type alias lost member(s) ${removed.join(', ')}. Consumers using exhaustive switch statements or direct literal comparisons against these values will fail to compile or silently mishandle them.`,
-    };
+    return results.length > 0 ? results : null;
   },
 };

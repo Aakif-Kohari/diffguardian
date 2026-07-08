@@ -126,7 +126,8 @@ diffguardian/
 │   │       ├── R01_param_removed.ts
 │   │       ├── R02_param_reordered.ts
 │   │       ├── ...             # 27 rules total
-│   │       └── R28_exported.ts
+│   │       ├── R28_exported.ts
+│   │       └── R29_type_alias_union_narrowed.ts
 │   │
 │   ├── reporter/
 │   │   ├── types.ts            # Reporter interface and config types
