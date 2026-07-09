@@ -231,6 +231,10 @@ Diff Guardian looks for a `dg.config.json` file in your project root.
 | `maxBarrelDepth` | `number` | `10` | Max recursive barrel file depth |
 | `maxTracerFiles` | `number` | `100` | Max files to AST-parse for call sites per symbol |
 
+Fields with the wrong type, or unrecognized top-level keys, are reported as
+`[dg] dg.config.json: ...` warnings on load and ignored (their default is
+used instead) — the file itself is never rejected wholesale.
+
 ---
 
 ## CI/CD Integration
