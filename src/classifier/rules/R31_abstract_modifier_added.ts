@@ -7,10 +7,10 @@
  * those subclasses will fail to compile until they supply their own
  * implementation.
  *
- * The reverse direction (abstract → concrete) is intentionally NOT flagged:
- * removing the `abstract` modifier just adds a default implementation that
- * subclasses are free to keep inheriting or continue overriding. No existing
- * caller or subclass is forced to change anything, so it is a safe change.
+ * The reverse direction (abstract → concrete) is safe and non-breaking, but
+ * still reported as an advisory `safe` result: subclasses now have an
+ * optional default implementation available, and downstream developers may
+ * want to know they can delete their now-unnecessary override boilerplate.
  */
 
 import { FunctionRule, RuleResult } from '../types';
@@ -32,6 +32,14 @@ export const abstractModifierAddedRule: FunctionRule = {
         severity: 'breaking',
         changeType: 'modifier_changed',
         message: `Method '${newSig.name}' was made abstract. Every existing subclass that does not already override this method will fail to compile, since a concrete implementation is no longer inherited.`,
+      };
+    }
+
+    if (wasAbstract && !isAbstractNow) {
+      return {
+        severity: 'safe',
+        changeType: 'modifier_changed',
+        message: `Method '${newSig.name}' is no longer abstract and now has a default implementation. Existing subclass overrides remain valid and are now optional — safe to remove if the default is sufficient.`,
       };
     }
 

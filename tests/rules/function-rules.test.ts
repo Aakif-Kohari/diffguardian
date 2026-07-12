@@ -1456,13 +1456,15 @@ describe('R31 — abstractModifierAddedRule', () => {
     expect(asSingle(result).message).toContain('abstract');
   });
 
-  it('🚫 False Positive: abstract → concrete must return null (safe direction)', () => {
+  it('✅ True Positive (Safe): flags abstract → concrete as advisory', () => {
     const oldSig = mockFnSig({ isAbstract: true });
     const newSig = mockFnSig({ isAbstract: false });
 
     const result = abstractModifierAddedRule.check(oldSig, newSig);
 
-    expect(result).toBeNull();
+    expect(result).not.toBeNull();
+    expect(asSingle(result).severity).toBe('safe');
+    expect(asSingle(result).changeType).toBe('modifier_changed');
   });
 
   it('🚫 False Positive: both concrete must return null', () => {
